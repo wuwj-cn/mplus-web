@@ -19,7 +19,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './main/header/header.component';
+import { SidebarComponent } from './main/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -30,7 +32,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
