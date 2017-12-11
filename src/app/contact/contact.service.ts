@@ -1,0 +1,33 @@
+import { Injectable, OnDestroy } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import { of }         from 'rxjs/observable/of';
+import { delay }      from 'rxjs/operators';
+
+export class Contact {
+  constructor(public id: number, public name: string) { }
+}
+
+const CONTACTS: Contact[] = [
+  new Contact(21, 'Sam Spade'),
+  new Contact(22, 'Nick Danger'),
+  new Contact(23, 'Nancy Drew')
+];
+
+const FETCH_LATENCY = 500;
+
+/** Simulate a data service that retrieves contacts from a server */
+@Injectable()
+export class ContactService implements OnDestroy {
+  ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
+  }
+  getContacts(): Observable<Contact[]> {
+    return of(CONTACTS).pipe(delay(FETCH_LATENCY));
+  }
+
+  getContact(id: number | string): Observable<Contact> {
+    return of(CONTACTS.find(contact => contact.id === +id))
+      .pipe(delay(FETCH_LATENCY));
+  }
+}

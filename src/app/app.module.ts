@@ -22,6 +22,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './main/header/header.component';
 import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { HighlightDirective } from './highlight.directive';
+import { TitleComponent } from './title/title.component';
+import { UserService } from './user.service';
+import { ContactComponent } from './contact/contact.component';
+import { AwesomePipe } from './contact/awesome.pipe';
+import { ContactService } from './contact/contact.service';
+import { ContactHighlightDirective } from './contact/contact-highlight.directive';
+import { ContactModule } from './contact/contact.module';
 
 
 @NgModule({
@@ -35,7 +43,9 @@ import { SidebarComponent } from './main/sidebar/sidebar.component';
     LoginComponent,
     MainComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    HighlightDirective,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +60,11 @@ import { SidebarComponent } from './main/sidebar/sidebar.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+
+    ContactModule 
   ],
-  providers: [HeroService, MessageService],
+  providers: [HeroService, MessageService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
