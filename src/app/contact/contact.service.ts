@@ -19,9 +19,9 @@ const FETCH_LATENCY = 500;
 /** Simulate a data service that retrieves contacts from a server */
 @Injectable()
 export class ContactService implements OnDestroy {
-  ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
-  }
+  constructor() { console.log('ContactService instance created.'); }
+  ngOnDestroy() { console.log('ContactService instance destroyed.'); }
+
   getContacts(): Observable<Contact[]> {
     return of(CONTACTS).pipe(delay(FETCH_LATENCY));
   }

@@ -1,7 +1,8 @@
+// Exact copy except import UserService from core
 import { Component, OnInit }      from '@angular/core';
 
 import { Contact, ContactService } from './contact.service';
-import { UserService }    from '../user.service';
+import { UserService }             from '../core/user.service';
 
 @Component({
   selector: 'app-contact',
