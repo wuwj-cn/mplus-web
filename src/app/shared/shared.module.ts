@@ -4,11 +4,19 @@ import { FormsModule }         from '@angular/forms';
 
 import { AwesomePipe }         from './awesome.pipe';
 import { HighlightDirective }  from './highlight.directive';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
+
+
 
 @NgModule({
-  imports:      [ CommonModule ],
-  declarations: [ AwesomePipe, HighlightDirective ],
-  exports:      [ AwesomePipe, HighlightDirective,
+  imports:      [ 
+    CommonModule
+  ],
+  declarations: [ AwesomePipe, HighlightDirective, ],
+  exports:      [ AwesomePipe, HighlightDirective, 
                   CommonModule, FormsModule ]
 })
 export class SharedModule { }

@@ -19,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule.forRoot({userName: 'Miss Marple'}),
     AppRoutingModule,
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
