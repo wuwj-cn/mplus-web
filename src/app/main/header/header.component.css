@@ -2,7 +2,7 @@
     background-color: #222;
   }
   :host .navbar .navbar-brand {
-    color: #fff;
+    color: #222;
   }
   :host .navbar .nav-item > a {
     color: #999;
