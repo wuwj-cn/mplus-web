@@ -7,16 +7,14 @@ import { HighlightDirective } from './highlight.directive';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule } from '@ngx-translate/core';
-import { TranslateLoader } from '@ngx-translate/core';
-
-
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    TranslateModule
   ],
   declarations: [AwesomePipe, HighlightDirective,],
   exports: [AwesomePipe, HighlightDirective,
-    CommonModule, FormsModule]
+    CommonModule, FormsModule, TranslateModule]
 })
 export class SharedModule { }

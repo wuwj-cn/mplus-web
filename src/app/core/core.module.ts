@@ -16,12 +16,11 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
-
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
   // for development
   // return new TranslateHttpLoader(http, '/mplus-web/dist/assets/i18n/', '.json');
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -35,7 +34,6 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

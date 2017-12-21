@@ -27,5 +27,6 @@
     "Pending Task" : "Pending Task",
     "In queue" : "In queue",
     "Mail" : "邮箱",
-    "View All" : "查看全部"
+    "View All" : "查看全部",
+    "projectname" : "项目名称"
 }

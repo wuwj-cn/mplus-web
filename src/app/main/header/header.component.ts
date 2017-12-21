@@ -10,7 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
-    constructor(private translate: TranslateService, public router: Router) { 
+    constructor(private translate: TranslateService, public router: Router) {
+        this.translate.addLangs(['en', 'zh']);
+        // this.translate.setDefaultLang('zh');
+        const browserLang = this.translate.getBrowserLang();
+        console.log("browserLang: " + browserLang);
+        // this.translate.use(browserLang.match(/en|zh/) ? browserLang : 'zh');
+
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
@@ -23,11 +29,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.translate.addLangs(['en', 'zh']);
-        this.translate.setDefaultLang('en');
-        const browserLang = this.translate.getBrowserLang();
-        console.log("browserLang: " + browserLang);
-        this.translate.use(browserLang.match(/en|zh/) ? browserLang : 'en');
+        
     }
 
     isToggled(): boolean {
