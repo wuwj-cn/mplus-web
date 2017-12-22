@@ -20,7 +20,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 export function createTranslateLoader(http: HttpClient) {
   // for development
   // return new TranslateHttpLoader(http, '/mplus-web/dist/assets/i18n/', '.json');
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
