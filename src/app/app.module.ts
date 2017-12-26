@@ -16,6 +16,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
   // for development
@@ -37,7 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    NgbModule.forRoot()
   ],
   declarations: [ AppComponent],
   bootstrap:    [ AppComponent ]

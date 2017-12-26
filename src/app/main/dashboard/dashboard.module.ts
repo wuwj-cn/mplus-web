@@ -10,12 +10,14 @@ import {
     ChatComponent
 } from './components';
 import { StatModule } from '../../shared/modules/stat/stat.module';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 
 @NgModule({
     imports: [
         CommonModule,
         NgbCarouselModule.forRoot(),
         NgbAlertModule.forRoot(),
+        NgbDropdownModule.forRoot(),
         DashboardRoutingModule,
         StatModule
     ],

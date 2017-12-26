@@ -5,15 +5,12 @@ import { MainComponent } from './main.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
-import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     MainRoutingModule,
-    TranslateModule,
     NgbDropdownModule.forRoot()
   ],
   declarations: [MainComponent, HeaderComponent, SidebarComponent]
