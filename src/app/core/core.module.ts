@@ -15,18 +15,6 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-
-// AoT requires an exported function for factories
-export function createTranslateLoader(http: HttpClient) {
-  // for development
-  // return new TranslateHttpLoader(http, '/mplus-web/dist/assets/i18n/', '.json');
-  console.log('createTranslateLoader...');
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
 @NgModule({
   imports: [
     CommonModule,
@@ -36,15 +24,8 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    NgbModule.forRoot(),
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    })
+    NgbModule.forRoot()
+    
   ],
   declarations: [TitleComponent],
   exports: [TitleComponent],
@@ -59,12 +40,12 @@ export class CoreModule {
     }
   }
 
-  static forRoot(config: UserServiceConfig): ModuleWithProviders {
-    return {
-      ngModule: CoreModule,
-      providers: [
-        { provide: UserServiceConfig, useValue: config }
-      ]
-    };
-  }
+  // static forRoot(config: UserServiceConfig): ModuleWithProviders {
+  //   return {
+  //     ngModule: CoreModule,
+  //     providers: [
+  //       { provide: UserServiceConfig, useValue: config }
+  //     ]
+  //   };
+  // }
 }

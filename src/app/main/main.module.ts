@@ -7,14 +7,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule.forChild(),
     MainRoutingModule,
-    NgbModule
+    TranslateModule,
+    NgbDropdownModule.forRoot()
   ],
   declarations: [MainComponent, HeaderComponent, SidebarComponent]
 })
