@@ -1,8 +1,7 @@
 import { Component }  from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Hero,
-         HeroService } from './hero.service';
+import { Hero, HeroService } from './hero.service';
 
 @Component({
   template: `

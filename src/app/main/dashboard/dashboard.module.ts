@@ -11,6 +11,7 @@ import {
 } from './components';
 import { StatModule } from '../../shared/modules/stat/stat.module';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.
         NgbAlertModule.forRoot(),
         NgbDropdownModule.forRoot(),
         DashboardRoutingModule,
+        PageHeaderModule,
         StatModule
     ],
     declarations: [

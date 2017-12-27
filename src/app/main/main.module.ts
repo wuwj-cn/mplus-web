@@ -7,11 +7,20 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '../core/in-memory-data.service';
+
 @NgModule({
   imports: [
     SharedModule,
     MainRoutingModule,
-    NgbDropdownModule.forRoot()
+    NgbDropdownModule.forRoot(),
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   declarations: [MainComponent, HeaderComponent, SidebarComponent]
 })

@@ -17,6 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -43,6 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgbModule.forRoot()
   ],
   declarations: [ AppComponent],
+  providers: [AuthGuard],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
