@@ -1,65 +1,96 @@
-/* Master Styles */
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}
-body {
-  margin: 2em;
-}
-body, input[text], button {
-  color: #888;
-  font-family: Cambria, Georgia;
-}
-a {
-  cursor: pointer;
-  cursor: hand;
-}
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
+@media screen and (max-width: 992px) {
+  .push-right .sidebar {
+    left: 235px !important;
+  }
 }
 
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
-  margin-top: 10px;
+/* .rtl {
+  rtl dropdown items correction
+} */
+.rtl .sidebar {
+  left: auto !important;
+  right: 0 !important;
+}
+.rtl .sidebar > ul.list-group {
+  padding: 0;
+}
+.rtl .main-container {
+  margin-left: 0 !important;
+  margin-right: 235px;
+}
+.rtl .dropdown-menu {
+  text-align: right;
+}
+.rtl * {
+  direction: rtl;
+}
+
+@media screen and (max-width: 992px) {
+  .rtl .navbar-brand {
+    direction: ltr;
+  }
+  .rtl .sidebar {
+    right: -235px !important;
+  }
+  .rtl .main-container {
+    margin-right: 0;
+  }
+  .rtl.push-right .sidebar {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Safari */
+  transform: translate(-50%, -50%);
+  /* Standard syntax */
+  width: 70px;
+  height: 70px;
+}
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+  border-radius: 100%;
   display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
-nav a:visited, a:link {
-  color: #607D8B;
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
 }
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 
-/* everywhere else */
-* {
-  font-family: Arial, Helvetica, sans-serif;
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.fs-12 {
+  font-size: 12px;
 }
