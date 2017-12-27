@@ -4,19 +4,11 @@ import {
   Optional, SkipSelf
 } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
-
-import { TitleComponent } from './title.component';
 import { UserService } from './user.service';
 import { UserServiceConfig } from './user.service';
 import { MessageService } from './message.service';
 
 @NgModule({
-  imports: [
-    CommonModule    
-  ],
-  declarations: [TitleComponent],
-  exports: [TitleComponent],
   providers: [UserService, MessageService]
 })
 export class CoreModule {

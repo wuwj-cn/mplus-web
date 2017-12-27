@@ -6,10 +6,10 @@ const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
       { path: '', redirectTo: 'dashboard' },
-      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'crisis', loadChildren: './crisis/crisis.module#CrisisModule' },
-      { path: 'heroes', loadChildren: './hero/hero.module#HeroModule' },
-      { path: 'contact', loadChildren: './contact/contact.module#ContactModule' },
+      { path: 'dashboard', loadChildren: '../pages/dashboard/dashboard.module#DashboardModule' },
+      { path: 'crisis', loadChildren: '../pages/crisis/crisis.module#CrisisModule' },
+      { path: 'heroes', loadChildren: '../pages/hero/hero.module#HeroModule' },
+      { path: 'contact', loadChildren: '../pages/contact/contact.module#ContactModule' },
     ]
   }
 ];
