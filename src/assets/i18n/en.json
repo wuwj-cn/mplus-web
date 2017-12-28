@@ -1,6 +1,10 @@
 {
-    "MPLUS": "MPLUS123",
-    "Dashboard": "Dashboard123",
+    "MPLUS": "MPLUS",
+    "Email": "Email",
+    "Password": "Password",
+    "Log in": "Log in",
+    "Register": "Register",
+    "Dashboard": "Dashboard",
     "Charts": "Charts",
     "Tables": "Tables",
     "Forms": "Forms",
@@ -14,12 +18,7 @@
     "Download Now": "Download Now",
     "Language": "Language",
     "English": "English",
-    "French": "French",
-    "Urdu": "Urdu",
-    "Spanish": "Spanish",
-    "Italian": "Italian",
-    "Farsi": "Farsi",
-    "German": "German",
+    "Chinese": "Chinese",
     "Search" : "Search",
     "Settings" : "Settings",
     "Profile" : "Profile",
@@ -28,6 +27,5 @@
     "Pending Task" : "Pending Task",
     "In queue" : "In queue",
     "Mail" : "Mail",
-    "View All" : "View All",
-    "projectname" : "Project Name"
+    "View All" : "View All"
 }
