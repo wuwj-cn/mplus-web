@@ -10,6 +10,7 @@ const routes: Routes = [
       { path: 'crisis', loadChildren: '../pages/crisis/crisis.module#CrisisModule' },
       { path: 'heroes', loadChildren: '../pages/hero/hero.module#HeroModule' },
       { path: 'contact', loadChildren: '../pages/contact/contact.module#ContactModule' },
+      { path: 'user', loadChildren: '../pages/users/users.module#UsersModule' }
     ]
   }
 ];
