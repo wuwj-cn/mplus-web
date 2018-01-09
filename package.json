@@ -24,6 +24,8 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.7",
     "@ngx-translate/core": "^9.0.2",
     "@ngx-translate/http-loader": "^2.0.1",
+    "ag-grid": "^15.0.0",
+    "ag-grid-angular": "^15.0.0",
     "angular-in-memory-web-api": "^0.5.2",
     "bootstrap": "^4.0.0-beta.2",
     "core-js": "^2.5.3",
