@@ -5,13 +5,13 @@ import {AgGridModule} from 'ag-grid-angular/main';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     UsersRoutingModule,
-    PageHeaderModule,
-    AgGridModule.withComponents([])
+    PageHeaderModule
   ],
   declarations: [UsersComponent]
 })
