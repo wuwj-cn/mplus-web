@@ -20,4 +20,10 @@ export class SidebarComponent {
             this.showMenu = element;
         }
     }
+
+    isCollapsed = false;
+
+    toggleCollapsed() {
+        this.isCollapsed = !this.isCollapsed;
+    }
 }
