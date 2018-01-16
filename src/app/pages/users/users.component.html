@@ -3,10 +3,9 @@
   <div class="row">
     <div class="col col-xl-12 col-lg-12">
       <div class="table-responsive-sm">
-        <table class="table table-hover table-striped table-sm">
+        <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">{{ 'UserName' | translate }}</th>
               <th scope="col">{{ 'Email' | translate }}</th>
               <th scope="col">{{ 'FullName' | translate }}</th>
@@ -15,15 +14,14 @@
           </thead>
           <tbody>
             <tr *ngFor="let user of users">
-              <th scope="row">1</th>
               <td>{{ user.username }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.fullname }}</td>
               <td>
-                <button type="button" class="btn btn-link" placement="top" ngbTooltip="View Detail">
+                <button type="button" style="border:none;" class="btn btn-sm btn-outline-primary" placement="top" ngbTooltip="View Detail">
                   <i class="fa fa-eye"></i>
                 </button>
-                <button type="button" class="btn btn-link" placement="top" ngbTooltip="Delete">
+                <button type="button" style="border:none;" class="btn btn-sm btn-outline-primary" placement="top" ngbTooltip="Delete">
                   <i class="fa fa-remove"></i>
                 </button>
               </td>
@@ -37,13 +35,13 @@
   <div class="row">
     <div class="col col-xl-6 col-lg-6">
       <div class="float-left">
-        <label>Show
+        <label>共 {{totalSize}} 条记录，每页
           <select>
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
-          </select> entries</label>
+          </select>条</label>
       </div>
     </div>
     <div class="col col-xl-6 col-lg-6">
@@ -52,4 +50,7 @@
       </div>
     </div>
   </div>
+
+
+  
 </div>

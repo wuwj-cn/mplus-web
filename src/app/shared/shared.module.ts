@@ -7,13 +7,15 @@ import { HighlightDirective } from './highlight.directive';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     TranslateModule,
-    NgbModule
+    NgbModule,
+    NgZorroAntdModule
   ],
   declarations: [
     AwesomePipe,
@@ -25,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     FormsModule,
     TranslateModule,
-    NgbModule
+    NgbModule,
+    NgZorroAntdModule
   ]
 })
 export class SharedModule { }

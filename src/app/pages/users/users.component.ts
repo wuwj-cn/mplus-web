@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { GridOptions } from 'ag-grid';
 
 @Component({
   selector: 'app-users',
@@ -10,9 +9,10 @@ import { GridOptions } from 'ag-grid';
 })
 export class UsersComponent implements OnInit {
   private page = 1;
-  private totalSize = 50;
+  private totalSize = 80;
   private users: any[];
   private pageSize = 10;
+
 
   constructor() {
     this.users = [
@@ -23,8 +23,6 @@ export class UsersComponent implements OnInit {
       {username: 'wuwj', email: 'wenjie.0617@gmail.com', fullname: 'wuwenjie'}
 
     ]
-
-    // this.totle = this.users.length;
   }
 
   ngOnInit() {
