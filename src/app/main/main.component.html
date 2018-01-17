@@ -1,5 +1,67 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<section class="main-container">
-  <router-outlet></router-outlet>
-</section>
+<nz-layout>
+    <nz-header>
+      <div class="logo"></div>
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+        <li nz-menu-item>nav 1</li>
+        <li nz-menu-item>nav 2</li>
+        <li nz-menu-item>nav 3</li>
+      </ul>
+    </nz-header>
+    <nz-layout>
+      <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzBreakpoint]="'xs'">
+        <button nz-button [nzType]="'primary'" nzGhost style="border:none;"
+                (click)="isCollapsed=!isCollapsed">
+          <i class="anticon trigger"
+            [class.anticon-menu-unfold]="isCollapsed"
+            [class.anticon-menu-fold]="!isCollapsed">
+          </i>
+        </button>
+        <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+          <li nz-submenu>
+            <span title><i class="anticon anticon-user"></i><span class="nav-text">User</span></span>
+            <ul>
+              <li nz-menu-item>option1</li>
+              <li nz-menu-item>option2</li>
+              <li nz-menu-item>option3</li>
+              <li nz-menu-item>option4</li>
+            </ul>
+          </li>
+          <li nz-submenu>
+            <span title><i class="anticon anticon-laptop"></i><span class="nav-text">Laptop</span></span>
+            <ul>
+              <li nz-menu-item>option5</li>
+              <li nz-menu-item>option6</li>
+              <li nz-menu-item>option7</li>
+              <li nz-menu-item>option8</li>
+            </ul>
+          </li>
+          <li nz-submenu>
+            <span title><i class="anticon anticon-notification"></i><span class="nav-text">notification</span></span>
+            <ul>
+              <li nz-menu-item>option9</li>
+              <li nz-menu-item>option10</li>
+              <li nz-menu-item>option11</li>
+              <li nz-menu-item>option12</li>
+            </ul>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-layout style="padding:0 24px 24px">
+        <nz-breadcrumb style="margin:12px 0;">
+          <nz-breadcrumb-item>
+            <a href="" [routerLink]="['/']"><i class="anticon anticon-home"></i><span>Home</span></a>
+          </nz-breadcrumb-item>
+          <nz-breadcrumb-item>
+            <a href="" [routerLink]="['/dashboard']"><i class="anticon anticon-dashboard"></i><span>Dashboard</span></a>
+          </nz-breadcrumb-item>
+          <nz-breadcrumb-item>
+            <a href="" [routerLink]="['/user']"><i class="anticon anticon-user"></i><span>User</span></a>
+          </nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <nz-content style="min-height: 280px;">
+          <router-outlet></router-outlet>
+        </nz-content>
+      </nz-layout>
+    </nz-layout>
+    <nz-footer>Footer</nz-footer>
+  </nz-layout>

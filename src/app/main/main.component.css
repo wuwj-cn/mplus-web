@@ -1,16 +1,31 @@
-.main-container {
-    margin-top: 56px;
-    margin-left: 235px;
-    padding: 15px;
-    -ms-overflow-x: hidden;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  @media screen and (max-width: 992px) {
-    .main-container {
-      margin-left: 0px !important;
-    }
-  }
+:host ::ng-deep .logo {
+  width: 120px;
+  height: 32px;
+  background: #333;
+  border-radius: 6px;
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+  display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+  display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .anticon {
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+:host ::ng-deep .trigger {
+  font-size: 16px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+:host ::ng-deep .trigger:hover {
+  color: #108ee9;
+}

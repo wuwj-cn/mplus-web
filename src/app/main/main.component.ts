@@ -12,4 +12,9 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 
+  isCollapsed = false;
+
+  toggleCollapsed() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }
