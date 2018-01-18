@@ -22,8 +22,4 @@ export class SidebarComponent {
     }
 
     isCollapsed = false;
-
-    toggleCollapsed() {
-        this.isCollapsed = !this.isCollapsed;
-    }
 }

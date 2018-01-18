@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() {  }
+  constructor(public router: Router) {  }
 
   ngOnInit() {
   }
@@ -17,4 +18,9 @@ export class MainComponent implements OnInit {
   toggleCollapsed() {
     this.isCollapsed = !this.isCollapsed;
   }
+
+  logout() {
+    localStorage.removeItem('isLoggedin');
+    this.router.navigate(['/login']);
+}
 }

@@ -1,10 +1,24 @@
 <nz-layout>
-    <nz-header>
+    <nz-header style="padding: 0 20px; min-width: 560px;">
       <div class="logo"></div>
       <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
         <li nz-menu-item>nav 1</li>
         <li nz-menu-item>nav 2</li>
         <li nz-menu-item>nav 3</li>
+        <li nz-menu-item style="float:right;">  
+          <nz-avatar nzIcon="user" style="top: 8px;"
+              nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>    
+          <nz-dropdown>              
+            <a class="ant-dropdown-link" nz-dropdown>              
+              <span>Admin</span> <i class="anticon anticon-down"></i>
+            </a>
+            <ul nz-menu [nzTheme]="'dark'">
+              <li nz-menu-item (click)="log('1st menu item')">1st menu item</li>
+              <li nz-menu-item (click)="log('2nd menu item')"><i class="fa fa-fw fa-gear"></i>{{ 'Settings' | translate }}</li>
+              <li nz-menu-item (click)="logout()"><i class="anticon anticon-power-off"></i>{{ 'Log Out' | translate }}</li>
+            </ul>
+          </nz-dropdown>
+        </li>
       </ul>
     </nz-header>
     <nz-layout>
@@ -58,10 +72,10 @@
             <a href="" [routerLink]="['/user']"><i class="anticon anticon-user"></i><span>User</span></a>
           </nz-breadcrumb-item>
         </nz-breadcrumb>
-        <nz-content style="min-height: 280px;">
+        <nz-content style="background:#fff; min-height: 280px;">
           <router-outlet></router-outlet>
         </nz-content>
       </nz-layout>
     </nz-layout>
-    <nz-footer>Footer</nz-footer>
+    <!-- <nz-footer>Footer</nz-footer> -->
   </nz-layout>

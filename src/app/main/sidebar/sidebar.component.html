@@ -1,49 +1,44 @@
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-    <ul class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
-        </a>
-        <a [routerLink]="['/crisis']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'crisis' | translate }}
-        </a>
-        <a [routerLink]="['/heroes']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'heroes' | translate }}
-        </a>
-        <a [routerLink]="['/contact']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'contact' | translate }}
-        </a>
-        <a [routerLink]="['/user']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'User Management' | translate }}
-        </a>
-        <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'Bootstrap Grid' | translate }}
-        </a>
-        <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-th-list"></i>&nbsp;{{ 'Component' | translate }}
-        </a>
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('pages')">
-                <span><i class="fa fa-caret-right"></i>&nbsp; {{ 'Menu' | translate }}</span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'pages'">
-                <ul class="submenu">
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-        <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-file-o"></i>&nbsp;{{ 'Blank Page' | translate }}
-        </a>
-        <a class="list-group-item more-themes" href="http://www.strapui.com/" >
-            {{ 'More Theme' | translate }}
-        </a>
+<nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzBreakpoint]="'xs'">
+    <button nz-button [nzType]="'primary'" nzGhost style="border:none;" (click)="isCollapsed=!isCollapsed">
+        <i class="anticon trigger" [class.anticon-menu-unfold]="isCollapsed" [class.anticon-menu-fold]="!isCollapsed">
+        </i>
+    </button>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+        <li nz-submenu>
+            <span title>
+                <i class="anticon anticon-user"></i>
+                <span class="nav-text">User</span>
+            </span>
+            <ul>
+                <li nz-menu-item>option1</li>
+                <li nz-menu-item>option2</li>
+                <li nz-menu-item>option3</li>
+                <li nz-menu-item>option4</li>
+            </ul>
+        </li>
+        <li nz-submenu>
+            <span title>
+                <i class="anticon anticon-laptop"></i>
+                <span class="nav-text">Laptop</span>
+            </span>
+            <ul>
+                <li nz-menu-item>option5</li>
+                <li nz-menu-item>option6</li>
+                <li nz-menu-item>option7</li>
+                <li nz-menu-item>option8</li>
+            </ul>
+        </li>
+        <li nz-submenu>
+            <span title>
+                <i class="anticon anticon-notification"></i>
+                <span class="nav-text">notification</span>
+            </span>
+            <ul>
+                <li nz-menu-item>option9</li>
+                <li nz-menu-item>option10</li>
+                <li nz-menu-item>option11</li>
+                <li nz-menu-item>option12</li>
+            </ul>
+        </li>
     </ul>
-</nav>
+</nz-sider>
