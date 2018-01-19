@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -9,10 +10,31 @@ import { routerTransition } from '../../router.animations';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() {
+  validateForm: FormGroup;
+  controlArray = [];
+  isCollapse = true;
+
+  toggleCollapse() {
+    this.isCollapse = !this.isCollapse;
+    this.controlArray.forEach((c, index) => {
+      c.show = this.isCollapse ? (index < 3) : true;
+    })
+  }
+
+  resetForm() {
+    this.validateForm.reset();
+  }
+
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
+    this.validateForm = this.fb.group({});
+
+    for (let i = 0; i < 10; i++) {
+      this.controlArray.push({ index: i, show: i < 3 });
+      this.validateForm.addControl(`field${i}`, new FormControl());
+    }
   }
 
   filterNameArray = [
@@ -89,5 +111,7 @@ export class UsersComponent implements OnInit {
     });
     this.search();
   }
+
+  
 
 }
