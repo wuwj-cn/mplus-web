@@ -25,53 +25,27 @@
     </div>
   </form>
   <div class="search-result-list">
-    <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+    <div style="margin-bottom: 16px; margin-left: 8px; text-align:left;">
+      <button nz-button [nzType]="'primary'">Add</button>
+    </div>
+    <nz-table #nzTable [nzDataSource]="_dataSet" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
       <thead nz-thead>
         <tr>
-          <th nz-th>
-            <span>Name</span>
-            <nz-table-sort [(nzValue)]="sortMap.name" (nzValueChange)="sort('name',$event)"></nz-table-sort>
-            <nz-dropdown [nzTrigger]="'click'">
-              <i class="anticon anticon-filter" nz-dropdown></i>
-              <ul nz-menu>
-                <li nz-menu-item *ngFor="let filter of filterNameArray">
-                  <label nz-checkbox [(ngModel)]="filter.value">
-                    <span>{{filter.name}}</span>
-                  </label>
-                </li>
-              </ul>
-              <div nz-table-filter>
-                <span nz-table-filter-confirm (click)="search()">OK</span>
-                <span nz-table-filter-clear (click)="reset(filterNameArray)">Reset</span>
-              </div>
-            </nz-dropdown>
+          <th nz-th nzCheckbox>
+            <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+            </label>
           </th>
-          <th nz-th>
-            <span>Age</span>
-            <nz-table-sort [(nzValue)]="sortMap.age" (nzValueChange)="sort('age',$event)"></nz-table-sort>
-          </th>
-          <th nz-th>
-            <span>Address</span>
-            <nz-table-sort [(nzValue)]="sortMap.address" (nzValueChange)="sort('address',$event)"></nz-table-sort>
-            <nz-dropdown [nzTrigger]="'click'">
-              <i class="anticon anticon-filter" nz-dropdown></i>
-              <ul nz-menu>
-                <li nz-menu-item *ngFor="let filter of filterAddressArray">
-                  <label nz-checkbox [(ngModel)]="filter.value">
-                    <span>{{filter.name}}</span>
-                  </label>
-                </li>
-              </ul>
-              <div nz-table-filter>
-                <span nz-table-filter-confirm (click)="search()">OK</span>
-                <span nz-table-filter-clear (click)="reset(filterAddressArray)">Reset</span>
-              </div>
-            </nz-dropdown>
-          </th>
+          <th nz-th><span>Name</span></th>
+          <th nz-th><span>Age</span></th>
+          <th nz-th><span>Address</span></th>
         </tr>
       </thead>
       <tbody nz-tbody>
         <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+          <td nz-td nzCheckbox>
+            <label nz-checkbox [(ngModel)]="data.checked" (ngModelChange)="_refreshStatus($event)">
+            </label>
+          </td>
           <td nz-td>
             <a>{{data.name}}</a>
           </td>

@@ -28,6 +28,36 @@ export class UsersComponent implements OnInit {
   constructor(private fb: FormBuilder) {
   }
 
+  _allChecked = false;
+  _disabledButton = true;
+  _checkedNumber = 0;
+  _displayData: Array<any> = [];
+  _operating = false;
+  _dataSet = [];
+  _indeterminate = false;
+
+  _displayDataChange($event) {
+    this._displayData = $event;
+  }
+
+  _refreshStatus() {
+    const allChecked = this._displayData.every(value => value.checked === true);
+    const allUnChecked = this._displayData.every(value => !value.checked);
+    this._allChecked = allChecked;
+    this._indeterminate = (!allChecked) && (!allUnChecked);
+    this._disabledButton = !this._dataSet.some(value => value.checked);
+    this._checkedNumber = this._dataSet.filter(value => value.checked).length;
+  }
+
+  _checkAll(value) {
+    if (value) {
+      this._displayData.forEach(data => data.checked = true);
+    } else {
+      this._displayData.forEach(data => data.checked = false);
+    }
+    this._refreshStatus();
+  }
+
   ngOnInit() {
     this.validateForm = this.fb.group({});
 
@@ -35,83 +65,15 @@ export class UsersComponent implements OnInit {
       this.controlArray.push({ index: i, show: i < 3 });
       this.validateForm.addControl(`field${i}`, new FormControl());
     }
-  }
 
-  filterNameArray = [
-    { name: 'Joe', value: false },
-    { name: 'Jim', value: false },
-  ];
-  filterAddressArray = [
-    { name: 'London', value: false },
-    { name: 'Sidney', value: false }
-  ];
-  sortMap = {
-    name   : null,
-    age    : null,
-    address: null
-  };
-  sortName = null;
-  sortValue = null;
-  data = [
-    {
-      name   : 'John Brown',
-      age    : 32,
-      address: 'New York No. 1 Lake Park',
-    }, {
-      name   : 'Jim Green',
-      age    : 42,
-      address: 'London No. 1 Lake Park',
-    }, {
-      name   : 'Joe Black',
-      age    : 32,
-      address: 'Sidney No. 1 Lake Park',
-    }, {
-      name   : 'Jim Red',
-      age    : 32,
-      address: 'London No. 2 Lake Park',
+
+    for (let i = 0; i < 4600; i++) {
+      this._dataSet.push({
+        key    : i,
+        name   : `Edward King ${i}`,
+        age    : 32,
+        address: `London, Park Lane no. ${i}`,
+      });
     }
-  ];
-  copyData = [ ...this.data ];
-
-  sort(sortName, value) {
-    this.sortName = sortName;
-    this.sortValue = value;
-    Object.keys(this.sortMap).forEach(key => {
-      if (key !== sortName) {
-        this.sortMap[ key ] = null;
-      } else {
-        this.sortMap[ key ] = value;
-      }
-    });
-    this.search();
   }
-
-  search() {
-    const searchAddress = this.filterAddressArray.filter(address => address.value);
-    const searchName = this.filterNameArray.filter(name => name.value);
-    const filterFunc = (item) => {
-      return (searchAddress.length ? searchAddress.some(address => item.address.indexOf(address.name) !== -1) : true) &&
-        (searchName.length ? searchName.some(name => item.name.indexOf(name.name) !== -1) : true)
-    };
-    this.data = [ ...this.copyData.filter(item => filterFunc(item)) ];
-    this.data = [ ...this.data.sort((a, b) => {
-      if (a[ this.sortName ] > b[ this.sortName ]) {
-        return (this.sortValue === 'ascend') ? 1 : -1;
-      } else if (a[ this.sortName ] < b[ this.sortName ]) {
-        return (this.sortValue === 'ascend') ? -1 : 1;
-      } else {
-        return 0;
-      }
-    }) ];
-  }
-
-  reset(array) {
-    array.forEach(item => {
-      item.value = false;
-    });
-    this.search();
-  }
-
-  
-
 }
