@@ -4,9 +4,8 @@ import {
   Optional, SkipSelf
 } from '@angular/core';
 
-import { UserService } from './user.service';
-import { UserServiceConfig } from './user.service';
 import { MessageService } from './message.service';
+import { UserService } from '../pages/users/user.service';
 
 @NgModule({
   providers: [UserService, MessageService]

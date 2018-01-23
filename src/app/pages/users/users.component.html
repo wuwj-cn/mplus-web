@@ -26,7 +26,7 @@
   </form>
   <div class="search-result-list">
     <div style="margin-bottom: 16px; margin-left: 8px; text-align:left;">
-      <button nz-button [nzType]="'primary'">Add</button>
+      <button nz-button [nzType]="'primary'" (click)="getUser()">Add</button>
     </div>
     <nz-table #nzTable [nzDataSource]="_dataSet" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
       <thead nz-thead>

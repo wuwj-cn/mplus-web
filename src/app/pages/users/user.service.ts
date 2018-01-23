@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import { MessageService } from '../../core/message.service';
 
-export class User {
-  constructor(public id: number, public name: string) { }
+export class Result {
+  constructor(public success: boolean, public data: Object) { }
 }
 
 const httpOptions = {
@@ -14,12 +15,13 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  private usersUrl = 'http://localhost:8080/user';  // URL to web api
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('')
-      .pipe(
-      );
+  constructor(private http: HttpClient, private msg: MessageService) { }
+
+  getUser() {
+    const url = `${this.usersUrl}/getOne/U10018`;
+    this.http.get<Result>(url).subscribe();
   }
 
 }

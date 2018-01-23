@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UserService } from './user.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-users',
@@ -25,7 +27,7 @@ export class UsersComponent implements OnInit {
     this.validateForm.reset();
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserService) {
   }
 
   _allChecked = false;
@@ -75,5 +77,11 @@ export class UsersComponent implements OnInit {
         address: `London, Park Lane no. ${i}`,
       });
     }
+  }
+
+
+  getUser() {
+    console.log('get user...');
+    this.userService.getUser();
   }
 }

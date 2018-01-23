@@ -2,7 +2,6 @@
 import { Component }   from '@angular/core';
 
 import { HeroService } from './hero.service';
-import { UserService } from '../../core/user.service';
 
 @Component({
   template: `
@@ -13,7 +12,5 @@ import { UserService } from '../../core/user.service';
 })
 export class HeroComponent {
   userName = '';
-  constructor(userService: UserService) {
-    this.userName = userService.userName;
-  }
+  constructor() { }
 }
