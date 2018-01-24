@@ -3,10 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from '../../core/message.service';
+import { Result } from '../../core/result';
 
-export class Result {
-  constructor(public success: boolean, public data: Object) { }
-}
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Result } from '../pages/users/user.service';
+import { Result } from '../core/result';
 
 @Injectable()
 export class LoginService {
