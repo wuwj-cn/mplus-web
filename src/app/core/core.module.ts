@@ -5,10 +5,9 @@ import {
 } from '@angular/core';
 
 import { MessageService } from './message.service';
-import { UserService } from '../pages/users/user.service';
 
 @NgModule({
-  providers: [UserService, MessageService]
+  providers: [MessageService]
 })
 export class CoreModule {
 

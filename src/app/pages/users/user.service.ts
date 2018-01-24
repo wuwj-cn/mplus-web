@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private usersUrl = 'http://localhost:8080/user';  // URL to web api
+  private usersUrl = '/api/user';  // URL to web api
 
   constructor(private http: HttpClient, private msg: MessageService) { }
 
