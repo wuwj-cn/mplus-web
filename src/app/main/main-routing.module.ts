@@ -5,7 +5,7 @@ import { MainComponent } from './main.component';
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
-      { path: '', redirectTo: 'dashboard' },
+      { path: '', redirectTo: 'user' },
       { path: 'dashboard', loadChildren: '../pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'crisis', loadChildren: '../pages/crisis/crisis.module#CrisisModule' },
       { path: 'heroes', loadChildren: '../pages/hero/hero.module#HeroModule' },

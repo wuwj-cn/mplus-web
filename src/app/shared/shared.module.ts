@@ -6,7 +6,6 @@ import { AwesomePipe } from './awesome.pipe';
 import { HighlightDirective } from './highlight.directive';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     CommonModule,
     FormsModule,
     TranslateModule,
-    NgbModule,
     NgZorroAntdModule
   ],
   declarations: [
@@ -27,7 +25,6 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     CommonModule,
     FormsModule,
     TranslateModule,
-    NgbModule,
     NgZorroAntdModule
   ]
 })

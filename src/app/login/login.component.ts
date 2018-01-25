@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   onLoggedin() {
     this.loginService.login('wuwj', '123456');
     localStorage.setItem('isLoggedin', 'true');
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/']);
   }
 
 }
