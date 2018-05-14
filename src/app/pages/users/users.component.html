@@ -2,13 +2,18 @@
 
   <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
     <div nz-row [nzGutter]="40">
-      <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" [style.display]="control.show?'block':'none'">
+      <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" 
+                  [style.display]="control.show?'block':'none'">
         <div nz-form-item nz-row>
           <div nz-form-label nz-col [nzSpan]="5">
             <label [attr.for]="'field'+control.index">Field {{control.index}}</label>
           </div>
           <div nz-form-control nz-col [nzSpan]="19">
-            <nz-input [nzSize]="'large'" [nzPlaceHolder]="'placeholder'" [formControlName]="'field'+control.index" [nzId]="'field'+control.index"></nz-input>
+            <nz-input [nzSize]="'large'" 
+                      [nzPlaceHolder]="'placeholder'" 
+                      [formControlName]="'field'+control.index" 
+                      [nzId]="'field'+control.index">
+            </nz-input>
           </div>
         </div>
       </div>
@@ -28,11 +33,15 @@
     <div style="margin-bottom: 16px; margin-left: 8px; text-align:left;">
       <button nz-button [nzType]="'primary'" (click)="getUser()">Add</button>
     </div>
-    <nz-table #nzTable [nzDataSource]="_dataSet" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
+    <nz-table #nzTable [nzDataSource]="_dataSet" [nzPageSize]="10" 
+          (nzDataChange)="_displayDataChange($event)" 
+          (nzPageIndexChange)="_refreshStatus()" 
+          (nzPageSizeChange)="_refreshStatus()">
       <thead nz-thead>
         <tr>
           <th nz-th nzCheckbox>
-            <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+            <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" 
+                (ngModelChange)="_checkAll($event)">
             </label>
           </th>
           <th nz-th><span>Name</span></th>
