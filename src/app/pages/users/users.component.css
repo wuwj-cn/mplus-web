@@ -6,11 +6,12 @@
     margin-right: 8px;
 }
 
-.ant-advanced-search-form {
+
+  .ant-advanced-search-form {
     padding: 24px;
     background: #fbfbfb;
-    /* border: 1px dashed #d9d9d9; */
-    /* border-radius: 6px; */
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
   }
 
   .search-result-list {
@@ -19,6 +20,10 @@
     /* border-radius: 6px; */
     /* background-color: #fafafa; */
     min-height: 200px;
-    text-align: center;
+    /* text-align: center; */
     /* padding-top: 80px; */
+  }
+
+  [nz-form-label] {
+    overflow: visible;
   }

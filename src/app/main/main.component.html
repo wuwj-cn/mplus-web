@@ -6,7 +6,7 @@
         <li nz-menu-item>nav 2</li>
         <li nz-menu-item>nav 3</li>
         <li nz-menu-item style="float:right;">  
-          <nz-avatar nzIcon="user" style="top: 8px;"
+          <nz-avatar nzIcon="user" 
               nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>    
           <nz-dropdown>              
             <a class="ant-dropdown-link" nz-dropdown>              
@@ -22,7 +22,8 @@
       </ul>
     </nz-header>
     <nz-layout style="min-height: 580px;">
-      <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzBreakpoint]="'xs'">
+      <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzBreakpoint]="'xs'" 
+                [nzWidth]="200">
         <button nz-button [nzType]="'primary'" nzGhost style="border:none;"
                 (click)="isCollapsed=!isCollapsed">
           <i class="anticon trigger"
@@ -61,7 +62,7 @@
         </ul>
       </nz-sider>
       <nz-layout style="padding:0 24px 24px">
-        <nz-breadcrumb style="margin:12px 0;">
+        <nz-breadcrumb style="margin:16px 0;">
           <nz-breadcrumb-item>
             <a href="" [routerLink]="['/']"><i class="anticon anticon-home"></i><span>Home</span></a>
           </nz-breadcrumb-item>
@@ -72,7 +73,7 @@
             <a href="" [routerLink]="['/user']"><i class="anticon anticon-user"></i><span>User</span></a>
           </nz-breadcrumb-item>
         </nz-breadcrumb>
-        <nz-content style="background:#fff; min-height: 280px;">
+        <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
           <router-outlet></router-outlet>
         </nz-content>
       </nz-layout>

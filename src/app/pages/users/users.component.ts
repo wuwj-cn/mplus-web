@@ -30,34 +30,39 @@ export class UsersComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService) {
   }
 
-  _allChecked = false;
-  _disabledButton = true;
-  _checkedNumber = 0;
-  _displayData: Array<any> = [];
-  _operating = false;
-  _dataSet = [];
-  _indeterminate = false;
+  allChecked = false;
+  disabledButton = true;
+  checkedNumber = 0;
+  displayData: Array<{ name: string; age: number; address: string; checked: boolean }> = [];
+  operating = false;
+  dataSet = [];
+  indeterminate = false;
 
-  _displayDataChange($event) {
-    this._displayData = $event;
+  currentPageDataChange($event: Array<{ name: string; age: number; address: string; checked: boolean }>): void {
+    this.displayData = $event;
   }
 
-  _refreshStatus() {
-    const allChecked = this._displayData.every(value => value.checked === true);
-    const allUnChecked = this._displayData.every(value => !value.checked);
-    this._allChecked = allChecked;
-    this._indeterminate = (!allChecked) && (!allUnChecked);
-    this._disabledButton = !this._dataSet.some(value => value.checked);
-    this._checkedNumber = this._dataSet.filter(value => value.checked).length;
+  refreshStatus(): void {
+    const allChecked = this.displayData.every(value => value.checked === true);
+    const allUnChecked = this.displayData.every(value => !value.checked);
+    this.allChecked = allChecked;
+    this.indeterminate = (!allChecked) && (!allUnChecked);
+    this.disabledButton = !this.dataSet.some(value => value.checked);
+    this.checkedNumber = this.dataSet.filter(value => value.checked).length;
   }
 
-  _checkAll(value) {
-    if (value) {
-      this._displayData.forEach(data => data.checked = true);
-    } else {
-      this._displayData.forEach(data => data.checked = false);
-    }
-    this._refreshStatus();
+  checkAll(value: boolean): void {
+    this.displayData.forEach(data => data.checked = value);
+    this.refreshStatus();
+  }
+
+  operateData(): void {
+    this.operating = true;
+    setTimeout(_ => {
+      this.dataSet.forEach(value => value.checked = false);
+      this.refreshStatus();
+      this.operating = false;
+    }, 1000);
   }
 
   ngOnInit() {
@@ -69,19 +74,18 @@ export class UsersComponent implements OnInit {
     }
 
 
-    for (let i = 0; i < 4600; i++) {
-      this._dataSet.push({
-        key    : i,
-        name   : `Edward King ${i}`,
-        age    : 32,
+    for (let i = 0; i < 46; i++) {
+      this.dataSet.push({
+        name: `Edward King ${i}`,
+        age: 32,
         address: `London, Park Lane no. ${i}`,
+        checked: false
       });
     }
   }
 
 
   getUser() {
-    console.log('get user...');
-    this.userService.getUser();
+    this.userService.getUser("00001").subscribe(res => console.log(res));
   }
 }

@@ -21,7 +21,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
   ],
   exports: [
     AwesomePipe,
-    HighlightDirective,
+    // HighlightDirective,
     CommonModule,
     FormsModule,
     TranslateModule,

@@ -1,21 +1,13 @@
 <div [@routerTransition]>
-
   <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
-    <div nz-row [nzGutter]="40">
-      <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" 
-                  [style.display]="control.show?'block':'none'">
-        <div nz-form-item nz-row>
-          <div nz-form-label nz-col [nzSpan]="5">
-            <label [attr.for]="'field'+control.index">Field {{control.index}}</label>
-          </div>
-          <div nz-form-control nz-col [nzSpan]="19">
-            <nz-input [nzSize]="'large'" 
-                      [nzPlaceHolder]="'placeholder'" 
-                      [formControlName]="'field'+control.index" 
-                      [nzId]="'field'+control.index">
-            </nz-input>
-          </div>
-        </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" [style.display]="control.show?'block':'none'">
+        <nz-form-item nzFlex>
+          <nz-form-label [nzFor]="'field'+control.index">Field {{control.index}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'field'+control.index" [attr.id]="'field'+control.index">
+          </nz-form-control>
+        </nz-form-item>
       </div>
     </div>
     <div nz-row>
@@ -30,36 +22,32 @@
     </div>
   </form>
   <div class="search-result-list">
-    <div style="margin-bottom: 16px; margin-left: 8px; text-align:left;">
-      <button nz-button [nzType]="'primary'" (click)="getUser()">Add</button>
+    <div style="margin-bottom: 16px;">
+      <button nz-button [disabled]="disabledButton" [nzType]="'primary'" [nzLoading]="operating" (click)="operateData()">
+        Reload
+      </button>
+      <span style="margin-left: 8px;" *ngIf="checkedNumber">Selected {{checkedNumber}} items</span>
     </div>
-    <nz-table #nzTable [nzDataSource]="_dataSet" [nzPageSize]="10" 
-          (nzDataChange)="_displayDataChange($event)" 
-          (nzPageIndexChange)="_refreshStatus()" 
-          (nzPageSizeChange)="_refreshStatus()">
-      <thead nz-thead>
+    <nz-table
+      #rowSelectionTable
+      [nzData]="dataSet"
+      (nzCurrentPageDataChange)="currentPageDataChange($event)"
+      (nzPageIndexChange)="refreshStatus()"
+      (nzPageSizeChange)="refreshStatus()">
+      <thead>
         <tr>
-          <th nz-th nzCheckbox>
-            <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" 
-                (ngModelChange)="_checkAll($event)">
-            </label>
-          </th>
-          <th nz-th><span>Name</span></th>
-          <th nz-th><span>Age</span></th>
-          <th nz-th><span>Address</span></th>
+          <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
         </tr>
       </thead>
-      <tbody nz-tbody>
-        <tr nz-tbody-tr *ngFor="let data of nzTable.data">
-          <td nz-td nzCheckbox>
-            <label nz-checkbox [(ngModel)]="data.checked" (ngModelChange)="_refreshStatus($event)">
-            </label>
-          </td>
-          <td nz-td>
-            <a>{{data.name}}</a>
-          </td>
-          <td nz-td>{{data.age}}</td>
-          <td nz-td>{{data.address}}</td>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus($event)"></td>
+          <td>{{data.name}}</td>
+          <td>{{data.age}}</td>
+          <td>{{data.address}}</td>
         </tr>
       </tbody>
     </nz-table>
