@@ -1,10 +1,10 @@
 <div [@routerTransition]>
   <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
     <div nz-row [nzGutter]="24">
-      <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" [style.display]="control.show?'block':'none'">
+      <div nz-col nzMd="8" nzSm="24" *ngFor="let control of controlArray" [style.display]="control.show?'block':'none'">
         <nz-form-item nzFlex>
           <nz-form-label [nzFor]="'field'+control.index">Field {{control.index}}</nz-form-label>
-          <nz-form-control>
+          <nz-form-control [nzSpan]="20">
             <input nz-input placeholder="placeholder" [formControlName]="'field'+control.index" [attr.id]="'field'+control.index">
           </nz-form-control>
         </nz-form-item>
@@ -37,9 +37,9 @@
       <thead>
         <tr>
           <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Address</th>
+          <th i18n="@@user_name">Name</th>
+          <th i18n="@@user_age">Age</th>
+          <th i18n="@@user_address">Address</th>
         </tr>
       </thead>
       <tbody>

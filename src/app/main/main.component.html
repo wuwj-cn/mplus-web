@@ -6,18 +6,19 @@
         <li nz-menu-item>nav 2</li>
         <li nz-menu-item>nav 3</li>
         <li nz-menu-item style="float:right;">  
-          <nz-avatar nzIcon="user" 
-              nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>    
-          <nz-dropdown>              
-            <a class="ant-dropdown-link" nz-dropdown>              
-              <span>Admin</span> <i class="anticon anticon-down"></i>
-            </a>
-            <ul nz-menu [nzTheme]="'dark'">
-              <li nz-menu-item (click)="log('1st menu item')">1st menu item</li>
-              <li nz-menu-item (click)="log('2nd menu item')"><i class="fa fa-fw fa-gear"></i>{{ 'Settings' | translate }}</li>
-              <li nz-menu-item (click)="logout()"><i class="anticon anticon-power-off"></i>{{ 'Log Out' | translate }}</li>
-            </ul>
-          </nz-dropdown>
+            <nz-dropdown nzPlacement="bottomRight">
+                <div class="item d-flex align-items-center px-sm" nz-dropdown>
+                  <nz-avatar nzIcon="user" 
+                    nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar> 
+                    <span>Admin</span> <i class="anticon anticon-down"></i>
+                </div>
+                <div nz-menu class="width-sm">
+                  <div nz-menu-item [nzDisabled]="true"><i class="anticon anticon-user mr-sm"></i>个人中心</div>
+                  <div nz-menu-item [nzDisabled]="true"><i class="anticon anticon-setting mr-sm"></i>设置</div>
+                  <li nz-menu-divider></li>
+                  <div nz-menu-item (click)="logout()"><i class="anticon anticon-setting mr-sm"></i>退出登录</div>
+                </div>
+              </nz-dropdown>
         </li>
       </ul>
     </nz-header>
