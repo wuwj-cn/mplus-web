@@ -17,6 +17,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { MP_I18N } from './i18n/mp-i18n.token';
 import zh_CN from './i18n/languages/zh_CN';
 import { I18nModule } from './i18n/i18n.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
