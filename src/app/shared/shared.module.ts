@@ -5,14 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AwesomePipe } from './awesome.pipe';
 import { HighlightDirective } from './highlight.directive';
 
-import { TranslateModule } from '@ngx-translate/core';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    TranslateModule,
+    // TranslateModule,
     NgZorroAntdModule
   ],
   declarations: [
@@ -24,7 +23,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     // HighlightDirective,
     CommonModule,
     FormsModule,
-    TranslateModule,
+    // TranslateModule,
     NgZorroAntdModule
   ]
 })

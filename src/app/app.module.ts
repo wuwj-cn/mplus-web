@@ -1,5 +1,5 @@
 /* Angular Imports */
-import { NgModule, LOCALE_ID }       from '@angular/core';
+import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -12,15 +12,11 @@ import { CoreModule }       from './core/core.module';
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-
 import { AuthGuard } from './shared/guard/auth.guard';
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-
-// i18n
-import { registerLocaleData } from '@angular/common';
-import zh from '@angular/common/locales/zh';
-registerLocaleData(zh);
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { MP_I18N } from './i18n/mp-i18n.token';
+import zh_CN from './i18n/languages/zh_CN';
+import { I18nModule } from './i18n/i18n.module';
 
 @NgModule({
   imports: [
@@ -30,10 +26,11 @@ registerLocaleData(zh);
     CoreModule,
     AppRoutingModule,
     HttpClientModule,
+    I18nModule,
     NgZorroAntdModule.forRoot()
   ],
   declarations: [ AppComponent],
-  providers: [ AuthGuard, { provide: LOCALE_ID, useValue: 'zh' } ],
+  providers: [ AuthGuard, { provide: MP_I18N, useValue: zh_CN } ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
