@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
       { path: '', redirectTo: 'user' },
-      { path: 'user', loadChildren: '../pages/users/users.module#UsersModule' }
+      { path: 'user', loadChildren: '../modules/users/users.module#UsersModule' }
     ]
   }
 ];
