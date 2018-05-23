@@ -5,7 +5,9 @@ import { of } from 'rxjs/observable/of';
 @Injectable()
 export class MessageService {
 
-  constructor() { }
+  constructor() {
+    
+  }
 
   messages: string[] = [];
 

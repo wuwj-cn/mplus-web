@@ -12,12 +12,9 @@ import { CoreModule }       from './core/core.module';
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 
-import { AuthGuard } from './shared/guard/auth.guard';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { MP_I18N } from './i18n/mp-i18n.token';
-import zh_CN from './i18n/languages/zh_CN';
-import { I18nModule } from './i18n/i18n.module';
-import { HttpClientModule } from '@angular/common/http';
+
+import { AuthGuard } from './core/guard/auth.guard';
 
 @NgModule({
   imports: [
@@ -26,12 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     // CoreModule.forRoot({userName: 'Miss Marple'}),
     CoreModule,
     AppRoutingModule,
-    HttpClientModule,
-    I18nModule,
     NgZorroAntdModule.forRoot()
   ],
   declarations: [ AppComponent],
-  providers: [ AuthGuard, { provide: MP_I18N, useValue: zh_CN } ],
+  providers: [ AuthGuard],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

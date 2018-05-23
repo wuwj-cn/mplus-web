@@ -1,3 +1,3 @@
-export interface MpI18nInterface   {
+export interface MpI18nInterface {
     locale: string;
 }

@@ -2,29 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AwesomePipe } from './awesome.pipe';
-import { HighlightDirective } from './highlight.directive';
-
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { HttpClientModule } from '@angular/common/http';
+import { MpI18nPipe } from '../i18n/mp-i18n.pipe';
+
+/**
+ * 包含在应用中共享使用的组件、指令和管道
+ * ShareModule应该只包含declarations, 并且应该导出几乎所有declarations里的声明
+ */
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    // TranslateModule,
-    NgZorroAntdModule
-  ],
   declarations: [
-    AwesomePipe,
-    HighlightDirective
+    MpI18nPipe
   ],
   exports: [
-    AwesomePipe,
-    // HighlightDirective,
     CommonModule,
     FormsModule,
-    // TranslateModule,
-    NgZorroAntdModule
+    HttpClientModule,
+    NgZorroAntdModule,
+    MpI18nPipe
   ]
 })
 export class SharedModule { }

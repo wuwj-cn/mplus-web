@@ -9,13 +9,11 @@ export class MpI18nService {
   private _locale: MpI18nInterface;
 
   constructor(@Inject(MP_I18N) locale: MpI18nInterface, private nzI18nService:NzI18nService) {
-    console.log('MpI18nService init...')
     this.setLocale(locale);
   }
 
   translate(path: string, data?: any): string {
     let content = this._getObjectPath(this._locale, path) as string;
-    console.log('content:' + content + ', data: ' + data);
     if (typeof content === 'string') {
       if (data) {
         Object.keys(data).forEach((key) => content = content.replace(new RegExp(`%${key}%`, 'g'), data[key]));
@@ -66,7 +64,6 @@ export class MpI18nService {
 }
 
 export function MP_LOCALE_SERVICE_PROVIDER_FACTORY(exist: MpI18nService, locale: MpI18nInterface, nzI18nService:NzI18nService): MpI18nService {
-  console.log('MP_LOCALE_SERVICE_PROVIDER_FACTORY init...')
   return exist || new MpI18nService(locale, nzI18nService);
 }
 
