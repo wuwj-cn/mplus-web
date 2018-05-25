@@ -8,6 +8,8 @@ import { MessageService } from './message.service';
 import { MP_I18N } from '../i18n/mp-i18n.token';
 import zh_CN from '../i18n/languages/zh_CN';
 import { MP_I18N_SERVICE_PROVIDER } from '../i18n/mp-i18n.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpServiceInterceptor } from './net/http-service.interceptor';
 
 /**
  * 只能在根模块 AppModule 中导入 CoreModule
@@ -17,6 +19,7 @@ import { MP_I18N_SERVICE_PROVIDER } from '../i18n/mp-i18n.service';
 @NgModule({
   providers: [
     MessageService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpServiceInterceptor, multi: true},
     { provide: MP_I18N, useValue: zh_CN },
     MP_I18N_SERVICE_PROVIDER,
   ]

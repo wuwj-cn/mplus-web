@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { HttpClientModule } from '@angular/common/http';
 import { MpI18nPipe } from '../i18n/mp-i18n.pipe';
 
 /**
@@ -18,7 +17,6 @@ import { MpI18nPipe } from '../i18n/mp-i18n.pipe';
   exports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     NgZorroAntdModule,
     MpI18nPipe
   ]

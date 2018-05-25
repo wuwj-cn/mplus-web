@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { AuthGuard } from './core/guard/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { AuthGuard } from './core/guard/auth.guard';
     // CoreModule.forRoot({userName: 'Miss Marple'}),
     CoreModule,
     AppRoutingModule,
+    HttpClientModule,
     NgZorroAntdModule.forRoot()
   ],
   declarations: [ AppComponent],

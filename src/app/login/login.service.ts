@@ -10,7 +10,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    console.log('login...');
     this.http.post<Result>(this.loginUrl, {
       username: username,
       password: password
