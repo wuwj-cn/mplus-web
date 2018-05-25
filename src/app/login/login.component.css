@@ -80,6 +80,9 @@
 :host ::ng-deep .icon:hover {
   color: #1890ff;
 }
+:host ::ng-deep .text-right {
+  text-align: right!important;
+}
 :host ::ng-deep .other {
   text-align: left;
   margin-top: 24px;
