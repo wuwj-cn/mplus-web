@@ -7,6 +7,9 @@ export default {
         edit: '编辑',
         delete: '删除'
     },
+    app: {
+        title: 'MPlus基础平台'
+    },
     user: {
         userCode: '用户编号',
         name: '名称',
