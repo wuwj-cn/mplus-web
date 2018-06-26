@@ -1,0 +1,49 @@
+<div [@routerTransition]>
+  <div nz-row [nzGutter]="24">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="8">
+      <nz-input-group [nzSuffix]="suffixIcon">
+        <input type="text" nz-input placeholder="Search Tree Node" [(ngModel)]="searchValue">
+      </nz-input-group>
+      <ng-template #suffixIcon>
+        <i class="anticon anticon-search"></i>
+      </ng-template>
+      <nz-tree [(ngModel)]="nodes" [nzSearchValue]="searchValue" [nzCheckable]="true" (nzOnSearchNode)="mouseAction('search',$event)"
+        (nzCheckBoxChange)="mouseAction('check',$event)" (nzClick)="mouseAction('click', $event)" (nzExpandChange)="mouseAction('expand',$event)"
+        (nzDblClick)="mouseAction('dblclick',$event)">
+      </nz-tree>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="16">
+      <div style="margin-bottom: 16px;">
+        <button nz-button [disabled]="disabledButton" [nzType]="'primary'" [nzLoading]="operating" (click)="operateData()">
+          Reload
+        </button>
+        <span style="margin-left: 8px;" *ngIf="checkedNumber">Selected {{checkedNumber}} items</span>
+      </div>
+      <nz-table #rowSelectionTable [nzData]="dataSet" (nzCurrentPageDataChange)="currentPageDataChange($event)" (nzPageIndexChange)="refreshStatus()"
+        (nzPageSizeChange)="refreshStatus()">
+        <thead>
+          <tr>
+            <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+            <th>{{'menu.menuCode' | mpI18n}}</th>
+            <th>{{'menu.menuName' | mpI18n}}</th>
+            <th>{{'base.action' | mpI18n}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of rowSelectionTable.data">
+            <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus($event)"></td>
+            <td>{{data.menuCode}}</td>
+            <td>{{data.menuName}}</td>
+            <td>
+              <a href="#">{{'base.edit' | mpI18n}}</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a href="#">{{'base.delete' | mpI18n}}</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+
+
+</div>

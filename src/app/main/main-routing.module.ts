@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
       { path: '', redirectTo: 'user' },
+      { path: 'menu', loadChildren: '../modules/menu/menu.module#MenuModule' },
       { path: 'user', loadChildren: '../modules/users/users.module#UsersModule' },
       { path: 'archive', loadChildren: '../modules/archive/archive.module#ArchiveModule'}
     ]
