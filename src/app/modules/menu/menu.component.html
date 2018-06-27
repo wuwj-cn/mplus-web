@@ -7,9 +7,27 @@
       <ng-template #suffixIcon>
         <i class="anticon anticon-search"></i>
       </ng-template>
-      <nz-tree [(ngModel)]="nodes" [nzSearchValue]="searchValue" [nzCheckable]="true" (nzOnSearchNode)="mouseAction('search',$event)"
-        (nzCheckBoxChange)="mouseAction('check',$event)" (nzClick)="mouseAction('click', $event)" (nzExpandChange)="mouseAction('expand',$event)"
-        (nzDblClick)="mouseAction('dblclick',$event)">
+      <nz-tree [(ngModel)]="nodes" [nzSearchValue]="searchValue" (nzOnSearchNode)="mouseAction('search',$event)" (nzExpandChange)="mouseAction('expand',$event)"
+        [nzShowExpand]="true" [nzDraggable]="true" (nzOnDragStart)="dragStart($event)" (nzClick)="activeNode($event)" (nzDblClick)="openFolder($event)">
+        <ng-template #contextTemplate>
+          <ul nz-menu nzInDropDown>
+            <li nz-menu-item (click)="showMenuFormModal()">新建菜单</li>
+            <li nz-menu-item (click)="showMenuFormModal()">新建上级菜单</li>
+          </ul>
+        </ng-template>
+        <ng-template #nzTreeTemplate let-node>
+          <span class="custom-node" draggable="true" aria-grabbed="true" [class.active]="activedNode?.key===node.key" title="{{node.title}}">
+            <span *ngIf="!node.isLeaf" [class.shine-animate]="node.origin.isLoading" (contextmenu)="contextMenu($event,contextTemplate, node)">
+              <i class="anticon anticon-folder" *ngIf="!node.isExpanded" (click)="openFolder(node)"></i>
+              <i class="anticon anticon-folder-open" *ngIf="node.isExpanded" (click)="openFolder(node)"></i>
+              <span class="folder-name">{{node.title}}</span>
+            </span>
+            <span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event,contextTemplate, node)">
+              <i class="anticon anticon-file"></i>
+              <span class="file-name">{{node.title}}</span>
+            </span>
+          </span>
+        </ng-template>
       </nz-tree>
     </div>
     <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="16">

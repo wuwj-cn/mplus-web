@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './menu.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MenuFormComponent } from './menu-form/menu-form.component';
 
 @NgModule({
   imports: [
@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MenuRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [MenuComponent]
+  declarations: [MenuComponent, MenuFormComponent],
+  entryComponents: [MenuFormComponent]
 })
 export class MenuModule { }

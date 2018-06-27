@@ -1,17 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { NzTreeNode } from 'ng-zorro-antd';
+import { Component, OnInit, HostListener, TemplateRef } from '@angular/core';
+import { NzTreeNode, NzDropdownContextComponent, NzDropdownService, NzFormatEmitEvent, NzModalService } from 'ng-zorro-antd';
+import { routerTransition } from '../../router.animations';
+import { MenuFormComponent } from './menu-form/menu-form.component';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  animations: [routerTransition()]
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private nzDropdownService: NzDropdownService,
+    private modalService: NzModalService
+  ) { }
 
   ngOnInit() {
   }
+
+  dropdown: NzDropdownContextComponent;
+  // can active only one node
+  activedNode: NzTreeNode;
+  dragNodeElement;
 
   searchValue;
   nodes = [
@@ -74,7 +85,119 @@ export class MenuComponent implements OnInit {
     })
   ];
 
+  @HostListener('mouseleave', ['$event'])
+  mouseLeave(event: MouseEvent): void {
+    event.preventDefault();
+    if (this.dragNodeElement && this.dragNodeElement.className.indexOf('is-dragging') > -1) {
+      this.dragNodeElement.className = this.dragNodeElement.className.replace(' is-dragging', '');
+    }
+  }
+
+  @HostListener('mousedown', ['$event'])
+  mouseDown(): void {
+    // do not prevent
+    if (this.dragNodeElement && this.dragNodeElement.className.indexOf('is-dragging') > -1) {
+      this.dragNodeElement.className = this.dragNodeElement.className.replace(' is-dragging', '');
+    }
+  }
+
+  /**
+   * important:
+   * if u want to custom event/node properties, u need to maintain the selectedNodesList/checkedNodesList yourself
+   * @param {} data
+   */
+  openFolder(data: NzTreeNode | NzFormatEmitEvent): void {
+    // do something if u want
+    if (data instanceof NzTreeNode) {
+      // change node's expand status
+      if (!data.isExpanded) {
+        // close to open
+        data.origin.isLoading = true;
+        setTimeout(() => {
+          data.isExpanded = !data.isExpanded;
+          data.origin.isLoading = false;
+        }, 500);
+      } else {
+        data.isExpanded = !data.isExpanded;
+      }
+    } else {
+      // change node's expand status
+      if (!data.node.isExpanded) {
+        // close to open
+        data.node.origin.isLoading = true;
+        setTimeout(() => {
+          data.node.isExpanded = !data.node.isExpanded;
+          data.node.origin.isLoading = false;
+        }, 500);
+      } else {
+        data.node.isExpanded = !data.node.isExpanded;
+      }
+    }
+  }
+
+  // 选中节点
+  activeNode(data: NzFormatEmitEvent): void {
+    if (this.activedNode) {
+      this.activedNode = null;
+    }
+    data.node.isSelected = true;
+    this.activedNode = data.node;
+  }
+
+  dragStart(event: NzFormatEmitEvent): void {
+    // disallow drag if root or search
+    this.activedNode = null;
+    this.dragNodeElement = event.event.srcElement;
+    if (this.dragNodeElement.className.indexOf('is-dragging') === -1) {
+      this.dragNodeElement.className = event.event.srcElement.className + ' is-dragging';
+    }
+  }
+
+  contextMenu($event: MouseEvent, template: TemplateRef<void>, node: NzTreeNode): void {
+    this.dropdown = this.nzDropdownService.create($event, template);
+  }
+
+  selectDropdown(): void {
+    this.dropdown.close();
+    // do something
+    console.log('dropdown clicked');
+  }
   mouseAction(name: string, e: any): void {
     console.log(name, e);
+  }
+
+  showMenuFormModal(): void {
+    this.dropdown.close();
+
+    const modal = this.modalService.create({
+      nzTitle: 'Modal Title',
+      nzContent: MenuFormComponent,
+      nzComponentParams: {
+        title: 'title in component',
+        subtitle: 'component sub title，will be changed after 2 sec'
+      },
+      nzFooter: [{
+        label: 'Confirm',
+        type: 'primary',
+        onClick: (componentInstance) => {
+          componentInstance.title = 'title in inner component is changed';
+        }
+      }, {
+        label: 'Close',
+        shape: 'default',
+        onClick: () => modal.destroy()
+      }]
+    });
+
+    modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
+
+    // Return a result when closed
+    modal.afterClose.subscribe((result) => console.log('[afterClose] The result is:', result));
+
+    // delay until modal instance created
+    // window.setTimeout(() => {
+    //   const instance = modal.getContentComponent();
+    //   instance.subtitle = 'sub title is changed';
+    // }, 2000);
   }
 }
