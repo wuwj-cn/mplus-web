@@ -13,14 +13,14 @@ export class MenuFormComponent implements OnInit {
 
   @Input() title: string;
   @Input() subtitle: string;
+  validateForm: FormGroup;
 
   constructor(private fb: FormBuilder, private modal: NzModalRef) {
     this.validateForm = this.fb.group({
-      userName: [ '', [ Validators.required ], [ this.userNameAsyncValidator ] ],
-      email   : [ '', [ Validators.email ] ],
-      password: [ '', [ Validators.required ] ],
-      confirm : [ '', [ this.confirmValidator ] ],
-      comment : [ '', [ Validators.required ] ]
+      menuCode: [ '', [ Validators.required ] ],
+      menuName   : [ '', [ Validators.required ] ],
+      url: [ '', [ Validators.required ] ],
+      icon : [ '', [ Validators.required ] ]
     });
   }
 
@@ -31,9 +31,7 @@ export class MenuFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  validateForm: FormGroup;
-  submitForm = ($event, value) => {
-    $event.preventDefault();
+  submitForm = (value) => {
     for (const key in this.validateForm.controls) {
       this.validateForm.controls[ key ].markAsDirty();
       this.validateForm.controls[ key ].updateValueAndValidity();
@@ -41,8 +39,7 @@ export class MenuFormComponent implements OnInit {
     console.log(value);
   };
 
-  resetForm(e: MouseEvent): void {
-    e.preventDefault();
+  resetForm(): void {
     this.validateForm.reset();
     for (const key in this.validateForm.controls) {
       this.validateForm.controls[ key ].markAsPristine();

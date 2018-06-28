@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, TemplateRef } from '@angular/core';
 import { NzTreeNode, NzDropdownContextComponent, NzDropdownService, NzFormatEmitEvent, NzModalService } from 'ng-zorro-antd';
 import { routerTransition } from '../../router.animations';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MpI18nService } from '../../i18n/mp-i18n.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +14,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private nzDropdownService: NzDropdownService,
-    private modalService: NzModalService
+    private modalService: NzModalService,
+    private i18nService: MpI18nService
   ) { }
 
   ngOnInit() {
@@ -177,16 +179,22 @@ export class MenuComponent implements OnInit {
         subtitle: 'component sub title，will be changed after 2 sec'
       },
       nzFooter: [{
-        label: 'Confirm',
+        label: this.i18nService.translate('base.Confirm'),
         type: 'primary',
-        onClick: (componentInstance) => {
-          componentInstance.title = 'title in inner component is changed';
+        disabled: ((menuForm) => !menuForm.validateForm.valid),
+        onClick: (menuForm) => {
+          menuForm.submitForm(menuForm.validateForm.value);
+        }
+      }, {
+        label: 'Reset',
+        onClick: (menuForm) => {
+          menuForm.resetForm();
         }
       }, {
         label: 'Close',
-        shape: 'default',
         onClick: () => modal.destroy()
-      }]
+      }],
+      nzMaskClosable: false
     });
 
     modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));

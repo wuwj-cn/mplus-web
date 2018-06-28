@@ -5,7 +5,9 @@ export default {
         add: '增加',
         search: '查询',
         edit: '编辑',
-        delete: '删除'
+        delete: '删除',
+        Confirm: '确认',
+        Cancel: '取消'
     },
     app: {
         title: 'MPlus基础平台'
