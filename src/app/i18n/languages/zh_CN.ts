@@ -6,8 +6,10 @@ export default {
         search: '查询',
         edit: '编辑',
         delete: '删除',
-        Confirm: '确认',
-        Cancel: '取消'
+        confirm: '确认',
+        cancel: '取消',
+        close: '关闭',
+        append: '添加'
     },
     app: {
         title: 'MPlus基础平台'

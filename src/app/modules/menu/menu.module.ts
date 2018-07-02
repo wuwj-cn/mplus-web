@@ -5,6 +5,7 @@ import { MenuComponent } from './menu.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MenuService } from './menu.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
     ReactiveFormsModule
   ],
   declarations: [MenuComponent, MenuFormComponent],
-  entryComponents: [MenuFormComponent]
+  entryComponents: [MenuFormComponent],
+  providers: [MenuService]
 })
 export class MenuModule { }

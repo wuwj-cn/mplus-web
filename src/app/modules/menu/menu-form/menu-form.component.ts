@@ -3,6 +3,7 @@ import { NzModalRef } from 'ng-zorro-antd';
 import { FormBuilder, Validators, FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-menu-form',
@@ -15,7 +16,7 @@ export class MenuFormComponent implements OnInit {
   @Input() subtitle: string;
   validateForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private modal: NzModalRef) {
+  constructor(private fb: FormBuilder, private modal: NzModalRef, private menuService: MenuService) {
     this.validateForm = this.fb.group({
       menuCode: [ '', [ Validators.required ] ],
       menuName   : [ '', [ Validators.required ] ],
@@ -37,6 +38,7 @@ export class MenuFormComponent implements OnInit {
       this.validateForm.controls[ key ].updateValueAndValidity();
     }
     console.log(value);
+    this.menuService.saveMenu(value);
   };
 
   resetForm(): void {

@@ -179,19 +179,14 @@ export class MenuComponent implements OnInit {
         subtitle: 'component sub title，will be changed after 2 sec'
       },
       nzFooter: [{
-        label: this.i18nService.translate('base.Confirm'),
+        label: this.i18nService.translate('base.append'),
         type: 'primary',
         disabled: ((menuForm) => !menuForm.validateForm.valid),
         onClick: (menuForm) => {
           menuForm.submitForm(menuForm.validateForm.value);
         }
       }, {
-        label: 'Reset',
-        onClick: (menuForm) => {
-          menuForm.resetForm();
-        }
-      }, {
-        label: 'Close',
+        label: this.i18nService.translate('base.close'),
         onClick: () => modal.destroy()
       }],
       nzMaskClosable: false
