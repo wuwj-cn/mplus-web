@@ -11,7 +11,7 @@ export class MenuService {
   constructor(private http: HttpClient) { }
 
   saveMenu(value) {
-    const url = `${this.menuUrl}/save`;
+    const url = `${this.menuUrl}/add`;
     this.http.post<Result>(url, value).subscribe();
   }
 }

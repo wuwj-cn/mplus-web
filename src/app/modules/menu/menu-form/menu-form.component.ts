@@ -37,8 +37,8 @@ export class MenuFormComponent implements OnInit {
       this.validateForm.controls[ key ].markAsDirty();
       this.validateForm.controls[ key ].updateValueAndValidity();
     }
-    console.log(value);
     this.menuService.saveMenu(value);
+    console.log(value);
   };
 
   resetForm(): void {

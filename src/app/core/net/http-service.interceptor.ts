@@ -28,8 +28,10 @@ export class HttpServiceInterceptor implements HttpInterceptor {
         return next.handle(req).pipe(
             mergeMap((event: any) => {
                 // 允许统一对请求错误处理，这是因为一个请求若是业务上错误的情况下其HTTP请求的状态是200的情况下需要
-                if (event instanceof HttpResponse && event.status === 200)
-                return this.handleData(event);
+                if (event instanceof HttpResponse && event.status === 200) {
+                    console.log('http-service.interceptor...');
+                    return this.handleData(event);
+                }
                 // 若一切都正常，则后续操作
                 return of(event);
             }),
@@ -45,7 +47,6 @@ export class HttpServiceInterceptor implements HttpInterceptor {
           case 200:
             if (event instanceof HttpResponse) {
                 const body: any = event.body;
-                console.log(body);
                 if (body && body.status !== 900) {
                     this.msg.error(body.msg);
                     // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
