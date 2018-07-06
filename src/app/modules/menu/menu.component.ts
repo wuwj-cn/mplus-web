@@ -3,6 +3,7 @@ import { NzTreeNode, NzDropdownContextComponent, NzDropdownService, NzFormatEmit
 import { routerTransition } from '../../router.animations';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MpI18nService } from '../../i18n/mp-i18n.service';
+import { TreeNode } from '@angular/router/src/utils/tree';
 
 @Component({
   selector: 'app-menu',
@@ -184,6 +185,11 @@ export class MenuComponent implements OnInit {
         disabled: ((menuForm) => !menuForm.validateForm.valid),
         onClick: (menuForm) => {
           menuForm.submitForm(menuForm.validateForm.value);
+          this.nodes.push(new NzTreeNode({
+            title: menuForm.validateForm.value.menuName,
+            key: menuForm.validateForm.value.menuCode,
+            children: []
+          }));
         }
       }, {
         label: this.i18nService.translate('base.close'),
