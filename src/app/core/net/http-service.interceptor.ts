@@ -63,15 +63,10 @@ export class HttpServiceInterceptor implements HttpInterceptor {
           case 401: // 未登录状态码
             this.navigate('/login');
             break;
-          case 403:
-          case 404:
-          case 500:
-            this.navigate(`/${event.status}`);
-            break;
           default:
             if (event instanceof HttpErrorResponse) {
-              console.warn('未可知错误', event);
-              this.msg.error(event.message);
+              console.error('未可知错误', event);
+              this.msg.error(event.error.msg);
             }
             break;
         }
