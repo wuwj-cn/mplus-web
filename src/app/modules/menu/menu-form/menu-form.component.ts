@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NzModalRef } from 'ng-zorro-antd';
 import { FormBuilder, Validators, FormGroup, FormControl, ValidationErrors } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+import { Observable ,  Observer } from 'rxjs';
 import { MenuService } from '../menu.service';
 
 @Component({

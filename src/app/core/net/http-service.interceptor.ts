@@ -1,8 +1,7 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpErrorResponse } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
-import { Observable } from "rxjs/Observable";
+import { Observable ,  of } from "rxjs";
 import { mergeMap, catchError } from "rxjs/operators";
-import { of } from "rxjs/observable/of";
 import { NzMessageService } from "ng-zorro-antd";
 import { Router } from "@angular/router";
 
