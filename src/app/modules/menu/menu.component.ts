@@ -1,9 +1,8 @@
 import { Component, OnInit, HostListener, TemplateRef } from '@angular/core';
 import { NzTreeNode, NzDropdownContextComponent, NzDropdownService, NzFormatEmitEvent, NzModalService } from 'ng-zorro-antd';
-import { routerTransition } from '../../router.animations';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { routerTransition } from '../../router.animations';
 import { MpI18nService } from '../../i18n/mp-i18n.service';
-import { TreeNode } from '@angular/router/src/utils/tree';
 
 @Component({
   selector: 'app-menu',
