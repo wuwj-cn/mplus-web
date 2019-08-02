@@ -1,33 +1,11 @@
 <div [@routerTransition]>
-    <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
-      <div nz-row [nzGutter]="24">
-        <div nz-col nzMd="8" nzSm="24" *ngFor="let control of controlArray" [style.display]="control.show?'block':'none'">
-          <nz-form-item nzFlex>
-            <nz-form-label [nzFor]="'field'+control.index">Field {{control.index}}</nz-form-label>
-            <nz-form-control [nzSpan]="20">
-              <input nz-input placeholder="placeholder" [formControlName]="'field'+control.index" [attr.id]="'field'+control.index">
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-      </div>
-      <div nz-row>
-        <div nz-col [nzSpan]="24" style="text-align: right;">
-          <button nz-button [nzType]="'primary'">Search</button>
-          <button nz-button (click)="resetForm()">Clear</button>
-          <a style="margin-left:8px;font-size:12px;" (click)="toggleCollapse()">
-            Collapse
-            <i class="anticon" [class.anticon-down]="isCollapse" [class.anticon-up]="!isCollapse"></i>
-          </a>
-        </div>
-      </div>
-    </form>
     <div class="search-result-list">
       <nz-table #nzTable [nzData]="data" (nzCurrentPageDataChange)="currentPageDataChange($event)" (nzPageIndexChange)="refreshStatus()"
         (nzPageSizeChange)="refreshStatus()">
         <thead>
           <tr>
-            <th>模块名称</th>
-            <th>模块编码</th>
+            <th nzWidth="20%">模块名称</th>
+            <th nzWidth="20%">模块编码</th>
             <th nzWidth="30%">模块描述</th>
             <th>版本</th>
             <th>{{'sys.status' | mpI18n}}</th>

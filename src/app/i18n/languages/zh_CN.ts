@@ -14,6 +14,9 @@ export default {
     app: {
         title: 'MPlus基础平台'
     },
+    sys: {
+        status: '状态'
+    },
     user: {
         userCode: '用户编号',
         name: '名称',
@@ -21,6 +24,6 @@ export default {
         email: '邮箱',
         tel: '手机号',
         orgName: '所属组织机构',
-        status: '状态'
+        status: '用户状态'
     }
 }
